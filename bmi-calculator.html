@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">BMI <span>GLOBAL</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="bmi-calculator.html">BMI Calculator</a>
+        <a href="diet-guide.html">Diet Guide</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding-top:48px;">
+    <div class="container">
+      <div class="eyebrow">Standalone Tool</div>
+      <h1 style="font-size:clamp(2.2rem,4.2vw,4rem);">Visitor <span style="color:var(--accent)">BMI Calculator</span></h1>
+      <p class="muted" style="max-width:720px; margin-top:14px;">Use this page when you want a simple experience focused only on BMI calculation and personalized diet direction.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container bmi-grid">
+      <div class="card">
+        <h3>Enter Measurements</h3>
+        <div class="card-sub">Height in centimeters · weight in kilograms</div>
+        <form id="bmiForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="visitorWeight">Weight (kg)</label>
+              <input type="number" id="visitorWeight" placeholder="e.g. 65" min="1" step="0.1" />
+            </div>
+            <div class="form-group">
+              <label for="visitorHeight">Height (cm)</label>
+              <input type="number" id="visitorHeight" placeholder="e.g. 170" min="1" step="0.1" />
+            </div>
+          </div>
+          <div style="margin-top:16px;"><button class="btn primary" type="submit">Calculate</button></div>
+        </form>
+
+        <div class="result-panel">
+          <div class="bmi-score" id="bmiScore">--</div>
+          <div class="badge obese" id="bmiBadge">Waiting for input</div>
+          <p class="note" id="bmiMessage">Enter your weight and height to calculate BMI.</p>
+          <table class="table">
+            <thead><tr><th>BMI Range</th><th>Category</th></tr></thead>
+            <tbody>
+              <tr><td>&lt; 18.5</td><td>Underweight</td></tr>
+              <tr><td>18.5 – 24.9</td><td>Normal</td></tr>
+              <tr><td>25.0 – 29.9</td><td>Overweight</td></tr>
+              <tr><td>30.0+</td><td>Obese</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Recommended Diet Direction</h3>
+        <div class="card-sub">Changes automatically based on BMI</div>
+        <div class="diet-panel">
+          <h3 id="dietTitle">Balanced Diet Guidance</h3>
+          <div class="kcal" id="dietCalories">Calories: calculate BMI to view recommendation</div>
+          <ul class="diet-list" id="dietList">
+            <li>Calorie range and meal ideas will appear here.</li>
+          </ul>
+          <p class="note" id="dietNote" style="margin-top:12px;">These are general suggestions and should not replace medical advice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <span>Simple visitor calculator page.</span>
+      <span><a href="index.html">Back to dashboard</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

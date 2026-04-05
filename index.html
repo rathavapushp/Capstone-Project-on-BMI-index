@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global BMI Trends Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">BMI <span>GLOBAL</span></div>
+      <div class="nav-links">
+        <a href="#trends">Trends</a>
+        <a href="#regions">Regions</a>
+        <a href="#gender">Gender</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#guides">Guides</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="fade-in-up">
+        <div class="eyebrow">WHO Global Data · 1990–2022 · 196 Countries</div>
+        <h1>Global <span>Overweight</span><br>&amp; Obesity Trends</h1>
+        <p>A comprehensive BMI dashboard with visual trends, regional comparison, gender gap analysis, and a visitor BMI calculator with calorie-wise diet guidance.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#calculator">Try BMI Calculator</a>
+          <a class="btn ghost" href="diet-guide.html">Open Diet Guide</a>
+        </div>
+      </div>
+      <div class="hero-card fade-in-up fade-delay-2">
+        <div class="hero-stats">
+          <div class="metric"><strong>43.5%</strong><span>Adults Overweight (2022)</span></div>
+          <div class="metric"><strong>15.8%</strong><span>Adults Obese (2022)</span></div>
+          <div class="metric"><strong>+18pp</strong><span>Rise since 1990</span></div>
+          <div class="metric"><strong>196</strong><span>Countries Tracked</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="trends">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Global Trends Over Time</h2>
+          <p>Percentage of adults in key BMI categories worldwide.</p>
+        </div>
+        <span class="tag">Both Sexes · Global</span>
+      </div>
+      <div class="grid-2">
+        <div class="card fade-in-up">
+          <h3>Overweight Prevalence (BMI ≥ 25)</h3>
+          <div class="card-sub">% of adults · 1990–2022</div>
+          <div class="chart-wrap"><canvas id="chartOverweight"></canvas></div>
+        </div>
+        <div class="card fade-in-up fade-delay-1">
+          <h3>Obesity Prevalence (BMI ≥ 30)</h3>
+          <div class="card-sub">% of adults · 2005–2022</div>
+          <div class="chart-wrap"><canvas id="chartObesity"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="regions">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Regional Comparison</h2>
+          <p>Overweight prevalence by WHO region, both sexes.</p>
+        </div>
+        <span class="tag">NCD_BMI_25A · Latest Year</span>
+      </div>
+      <div class="grid-2">
+        <div class="card fade-in-up">
+          <h3>Overweight % by Region (2022)</h3>
+          <div class="card-sub">% adults with BMI ≥ 25</div>
+          <div class="bar-chart" id="regionBars"></div>
+        </div>
+        <div class="card fade-in-up fade-delay-1">
+          <h3>Regional Trend Trajectories</h3>
+          <div class="card-sub">Africa and South-East Asia are fastest risers</div>
+          <div class="chart-wrap"><canvas id="chartRegions"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gender">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Gender Gap</h2>
+          <p>Male vs female overweight prevalence globally.</p>
+        </div>
+        <span class="tag">NCD_BMI_25A · Global</span>
+      </div>
+      <div class="grid-2">
+        <div class="card fade-in-up">
+          <h3>Male vs Female Trend</h3>
+          <div class="card-sub">% adults with BMI ≥ 25 · 1990–2022</div>
+          <div class="chart-wrap"><canvas id="chartGender"></canvas></div>
+        </div>
+        <div class="card fade-in-up fade-delay-1">
+          <h3>2022 Snapshot by Sex</h3>
+          <div class="card-sub">Latest global prevalence figures</div>
+          <div class="bar-chart" style="margin-top:16px;">
+            <div class="bar-row"><div class="bar-label">Female</div><div class="bar-track"><div class="bar-fill" style="width:87.8%; background:var(--accent2)"></div></div><div class="bar-val" style="color:var(--accent2)">43.9%</div></div>
+            <div class="bar-row"><div class="bar-label">Both sexes</div><div class="bar-track"><div class="bar-fill" style="width:87%; background:var(--accent3)"></div></div><div class="bar-val" style="color:var(--accent3)">43.5%</div></div>
+            <div class="bar-row"><div class="bar-label">Male</div><div class="bar-track"><div class="bar-fill" style="width:86.2%; background:var(--accent)"></div></div><div class="bar-val" style="color:var(--accent)">43.1%</div></div>
+          </div>
+          <div class="result-panel" style="margin-top:24px;">
+            <p class="note">The female lead narrowed from more than 3 percentage points in 1990 to under 1 point in 2022, showing convergence toward similarly high overweight rates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>BMI Calculator for Visitors</h2>
+          <p>Enter height and weight to get BMI plus calorie-wise diet suggestions.</p>
+        </div>
+        <span class="tag">Interactive Tool</span>
+      </div>
+      <div class="bmi-grid">
+        <div class="card fade-in-up">
+          <h3>Calculate Your BMI</h3>
+          <div class="card-sub">Metric input · instant output</div>
+          <form id="bmiForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="visitorWeight">Weight (kg)</label>
+                <input type="number" id="visitorWeight" placeholder="e.g. 70" min="1" step="0.1" />
+              </div>
+              <div class="form-group">
+                <label for="visitorHeight">Height (cm)</label>
+                <input type="number" id="visitorHeight" placeholder="e.g. 175" min="1" step="0.1" />
+              </div>
+            </div>
+            <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+              <button class="btn primary" type="submit">Calculate BMI</button>
+              <a class="btn ghost" href="bmi-calculator.html">Open Full Calculator Page</a>
+            </div>
+          </form>
+
+          <div class="result-panel">
+            <div class="bmi-score" id="bmiScore">--</div>
+            <div class="badge obese" id="bmiBadge">Waiting for input</div>
+            <p class="note" id="bmiMessage">Enter valid values to calculate BMI.</p>
+
+            <table class="table">
+              <thead><tr><th>BMI Range</th><th>Category</th></tr></thead>
+              <tbody>
+                <tr><td>&lt; 18.5</td><td>Underweight</td></tr>
+                <tr><td>18.5 – 24.9</td><td>Normal</td></tr>
+                <tr><td>25.0 – 29.9</td><td>Overweight</td></tr>
+                <tr><td>30.0+</td><td>Obese</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card fade-in-up fade-delay-1">
+          <h3>Diet Suggestion</h3>
+          <div class="card-sub">Updated automatically by BMI result</div>
+          <div class="diet-panel">
+            <h3 id="dietTitle">Balanced Diet Guidance</h3>
+            <div class="kcal" id="dietCalories">Calories: calculate BMI to view recommendation</div>
+            <ul class="diet-list" id="dietList">
+              <li>Underweight: focus on calorie surplus with nutrient-dense foods.</li>
+              <li>Overweight: focus on calorie deficit with high-protein, high-fiber meals.</li>
+              <li>Normal range: maintain balanced eating and regular activity.</li>
+            </ul>
+            <p class="note" id="dietNote" style="margin-top:12px;">These are general suggestions for website visitors and not a medical diagnosis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="guides">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Support Pages</h2>
+          <p>Extra pages included in this project for visitors and presentation use.</p>
+        </div>
+        <span class="tag">Multi-page Website</span>
+      </div>
+      <div class="link-cards">
+        <div class="link-card fade-in-up">
+          <h3>Dedicated BMI Calculator Page</h3>
+          <p>Use a cleaner standalone calculator page for visitors who want just the interactive tool and diet recommendation.</p>
+          <a class="btn primary" href="bmi-calculator.html">Open BMI Calculator</a>
+        </div>
+        <div class="link-card fade-in-up fade-delay-1">
+          <h3>Diet Guide Page</h3>
+          <p>Includes underweight, normal, overweight, and obese diet ideas with calorie ranges and food suggestions.</p>
+          <a class="btn primary" href="diet-guide.html">Open Diet Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Key Findings</h2>
+          <p>Evidence-based takeaways from the BMI trend dataset.</p>
+        </div>
+        <span class="tag">Analysis Summary</span>
+      </div>
+      <div class="insight-grid">
+        <div class="insight fade-in-up"><strong>+73%</strong><h4>Relative rise in overweight</h4><p>Global overweight prevalence rose from 25.2% in 1990 to 43.5% in 2022.</p></div>
+        <div class="insight fade-in-up fade-delay-1"><strong>50%</strong><h4>Europe & Americas at ceiling</h4><p>These regions approached 50% overweight prevalence by the early 2000s.</p></div>
+        <div class="insight fade-in-up fade-delay-2"><strong>+17pp</strong><h4>Africa fastest rising</h4><p>Africa climbed from 13.9% in 1990 to 31.3% in 2022.</p></div>
+        <div class="insight fade-in-up fade-delay-3"><strong>15.8%</strong><h4>Global obesity milestone</h4><p>Obesity reached 15.8% globally in 2022, up sharply from 2005.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <span>Source: WHO Global Health Observatory — NCD BMI indicators.</span>
+      <span>Project files: index.html, bmi-calculator.html, diet-guide.html, styles.css, script.js</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
